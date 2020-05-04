@@ -54,7 +54,7 @@ Invalid Credentials Test
     Element Should Be Visible    xpath=.//*[@id='msg']    Invalid credentials
     SeleniumLibrary.Close Browser
     
-Create New Program
+Create successful campaign 
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
@@ -128,7 +128,7 @@ Create New Program
     SeleniumLibrary.Click Element    xpath=.//button[@ng-click='approval()']
     SeleniumLibrary.Close Browser
 	
-Approve program in reviewer dashboard
+Approve the program in reviewer dashboard
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
@@ -155,7 +155,7 @@ Approve program in reviewer dashboard
     SeleniumLibrary.Click Element    xpath=(.//button[@title='Ok'])[2]
     SeleniumLibrary.Close Browser
 
-Check reviewer approve status in creator dashboard
+Ensure approved program display in creator dashboard
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
@@ -178,7 +178,7 @@ Check reviewer approve status in creator dashboard
     Run Keyword If    '${status_str}'=='${Creator_status_apprv}'    Log To Console    Approve Status are display correctly
     SeleniumLibrary.Close Browser
 	
-Abort program
+Abort program in reviewer dashboard
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
@@ -202,7 +202,7 @@ Abort program
     SeleniumLibrary.Click Element    xpath=(.//*[@title='Ok'])[3]
     SeleniumLibrary.Close Browser
 	
-Check reviewer abort status in creator dashboard
+Ensure abort program display in creator dashboard
     S${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
@@ -226,7 +226,7 @@ Check reviewer abort status in creator dashboard
     Run Keyword If    '${status_str}'=='${Creator_status_abrt}'    Log To Console    Aborted Status are display correctly
     SeleniumLibrary.Close Browser
 
-Search and delete program
+Search and delete program in creator dashboard
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
