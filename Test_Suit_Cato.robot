@@ -72,8 +72,8 @@ Create successful campaign
     SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//li[@ng-click='createNewProgram()']    60s
     SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
     Sleep    20s
-    SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//div[@id='productName'][contains(.,'Savings Account')]    40s
-    SeleniumLibrary.Click Element    xpath=.//div[@id='productName'][contains(.,'Savings Account')]
+    SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//div[@id='productName'][contains(.,'Savings Accounts')]    40s
+    SeleniumLibrary.Click Element    xpath=.//div[@id='productName'][contains(.,'Savings Accounts')]
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=.//div[@class='objectivelist']/div[contains(.,'Cross-sell')]
     SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//div[@class='approach-head']/div[contains(.,'Volatile account balances')]    40s
@@ -252,4 +252,32 @@ Search and delete program in creator dashboard
     SeleniumLibrary.Click Element    xpath=.//*[@id='commonAlert']/div/div/div/div[2]/div/div/div/div/button
     SeleniumLibrary.Close Browser
    
+Create campaign after 30 days
+    SeleniumLibrary.Open Browser    ${url}    ${browser}
+    SeleniumLibrary.Maximize Browser Window
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
+    SeleniumLibrary.Input Text    id=form_username    testpurpose
+    SeleniumLibrary.Input Text    id=form_password    testpurpose
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    20s
+    SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//li[@ng-click='createNewProgram()']    60s
+    SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
+    Sleep    20s
+    SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//div[@id='productName'][contains(.,'Savings Account')]    40s
+    SeleniumLibrary.Click Element    xpath=.//div[@id='productName'][contains(.,'Savings Account')]
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=.//div[@class='objectivelist']/div[contains(.,'Cross-sell')]
+    SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//div[@class='approach-head']/div[contains(.,'Volatile account balances')]    40s
+    SeleniumLibrary.Click Element    xpath=.//div[@class='approach-head']/div[contains(.,'Volatile account balances')]
+    SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
+    SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
+    SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
+    SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
+    SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
+    SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
+    SeleniumLibrary.Click Element    xpath=(.//table[@class='ui-datepicker-calendar']/tbody/tr/td[contains(.,'3')])[1]
+    SeleniumLibrary.Click Element    xpath=.//input[@name='saveChanges']
+    Sleep    15s
+    SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//a[@title='Check Count']
+
 *** Keywords ***
