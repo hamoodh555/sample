@@ -2,7 +2,7 @@
 Library           SeleniumLibrary
 
 *** Variables ***
-${LOGIN URL}      http://webtest.xerago.com/cvm
+${LOGIN URL}      http://webdev.xerago.com/cvm
 ${BROWSER}        chrome
 ${control_val}    15
 ${Program_title}    Program for Cross-sell Savings Accounts Volatile account balances
@@ -38,8 +38,7 @@ Invalid Credentials Test
 
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
-    Go to    ${LOGIN URL}
-    
+    Go to    ${LOGIN URL}   
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     Sleep	20s
@@ -134,9 +133,9 @@ Approve the program in reviewer dashboard
     Call Method    ${chrome_options}   add_argument    no-sandbox
 
 
-    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Create WebDriver  Chrome  chrome_options=${chrome_options}    
+    Set Window Size    1920    1080
     Go to    ${LOGIN URL} 
-    SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
@@ -162,8 +161,8 @@ Ensure approved program display in creator dashboard
 
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Set Window Size    1920    1080
     Go to    ${LOGIN URL} 
-    SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -185,8 +184,8 @@ Abort program in reviewer dashboard
 
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
-    Go to    ${LOGIN URL} 
-    SeleniumLibrary.Maximize Browser Window
+    Set Window Size    1920    1080
+    Go to    ${LOGIN URL}
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
@@ -208,9 +207,9 @@ Ensure abort program display in creator dashboard
     Call Method    ${chrome_options}   add_argument    no-sandbox
 
 
-    Create WebDriver  Chrome  chrome_options=${chrome_options}
-    Go to    ${LOGIN URL} 
-    SeleniumLibrary.Maximize Browser Window
+    Create WebDriver  Chrome  chrome_options=${chrome_options}   
+    Set Window Size    1920    1080
+    Go to    ${LOGIN URL}
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -232,9 +231,9 @@ Search and delete program in creator dashboard
     Call Method    ${chrome_options}   add_argument    no-sandbox
 
 
-    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Create WebDriver  Chrome  chrome_options=${chrome_options}    
+    Set Window Size    1920    1080
     Go to    ${LOGIN URL} 
-    SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -252,8 +251,15 @@ Search and delete program in creator dashboard
     SeleniumLibrary.Close Browser
    
 Create campaign after 30 days
-    SeleniumLibrary.Open Browser    ${url}    ${browser}
-    SeleniumLibrary.Maximize Browser Window
+
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+    
+    Create WebDriver  Chrome  chrome_options=${chrome_options}    
+    Set Window Size    1920    1080
+    Go to    ${LOGIN URL} 
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -278,5 +284,6 @@ Create campaign after 30 days
     SeleniumLibrary.Click Element    xpath=.//input[@name='saveChanges']
     Sleep    15s
     SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//a[@title='Check Count']
+    SeleniumLibrary.Close Browser
 
 *** Keywords ***
