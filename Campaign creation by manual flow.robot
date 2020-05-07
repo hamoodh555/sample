@@ -15,7 +15,14 @@ ${alert_txt}      Program already exists for the given period
 
 *** Test Cases ***
 To create a new campaign
-    SeleniumLibrary.Open Browser    ${url}    ${browser}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Go to    ${url}
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
@@ -102,7 +109,14 @@ To create a new campaign
     SeleniumLibrary.Close Browser
 
 Review and Approve a campaign
-    SeleniumLibrary.Open Browser    ${url}    ${browser}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Go to    ${url}
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    reviewers
