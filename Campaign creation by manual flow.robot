@@ -3,7 +3,7 @@ Library           SeleniumLibrary
 Library           Selenium2Library
 
 *** Variables ***
-${url}            http://webdev.xerago.com/cvm
+${url}            http://webtest.xerago.com/cvm
 ${browser}        chrome
 ${excelfile}      I:/testdata.xls
 ${control_val}    15
