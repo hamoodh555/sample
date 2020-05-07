@@ -147,11 +147,6 @@ Approve the program in reviewer dashboard
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=(.//button[@title='Ok'])[2]
     Sleep    20s
-    SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@ng-click='comApproveCamp(x)'])[1]
-    Sleep    15s
-    SeleniumLibrary.Click Element    xpath=.//button[@ng-click='approveProgramCom(0)']
-    Sleep    10s
-    SeleniumLibrary.Click Element    xpath=(.//button[@title='Ok'])[2]
     SeleniumLibrary.Close Browser
 
 Ensure approved program display in creator dashboard
@@ -192,15 +187,6 @@ Abort program in reviewer dashboard
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
     SeleniumLibrary.Click Button    id=form_login
     Sleep    30s
-    SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@class='sprite-globe iconabort'])[1]
-    Sleep    20s
-    SeleniumLibrary.Input Text    xpath=.//*[@id='rejectReasonCamp']    test
-    Sleep    10s
-    SeleniumLibrary.Click Element    xpath=.//*[@ng-click='abortProgram(abortValue,rejectReasonCamp)']
-    Sleep    10s
-    SeleniumLibrary.Click Element    xpath=.//*[@title='Abort']
-    Sleep    10s
-    SeleniumLibrary.Click Element    xpath=(.//*[@title='Ok'])[3]
     SeleniumLibrary.Close Browser
 	
 Ensure abort program display in creator dashboard
