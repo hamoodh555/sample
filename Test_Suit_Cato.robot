@@ -2,7 +2,7 @@
 Library           SeleniumLibrary
 
 *** Variables ***
-${LOGIN URL}      http://webdev.xerago.com/cvm
+${LOGIN URL}      http://webtest.xerago.com/cvm
 ${BROWSER}        chrome
 ${control_val}    15
 ${Program_title}    Program for Cross-sell Savings Accounts Volatile account balances
@@ -22,7 +22,7 @@ Valid Credentials Test
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
     Go to    ${LOGIN URL}
-    
+    SeleniumLibrary.Set Window Size    1920     1024
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     Sleep	20s
