@@ -18,7 +18,7 @@ Valid Credentials Test
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    no-sandbox
-
+    Call Method    ${chrome_options}   add_argument    window-size=1920,1080
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
     Go to    ${LOGIN URL}
