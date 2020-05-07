@@ -20,8 +20,8 @@ Valid Credentials Test
     Call Method    ${chrome_options}   add_argument    no-sandbox
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Set Window Size    1920    1080
     Go to    ${LOGIN URL}
-    SeleniumLibrary.Set Window Size    1366    768
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     Sleep	20s
     SeleniumLibrary.Element Text Should Be    //label[@class='loginLabel']    Username
@@ -60,8 +60,8 @@ Create successful campaign
 
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Set Window Size    1920    1080
     Go to    ${LOGIN URL} 
-    SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
