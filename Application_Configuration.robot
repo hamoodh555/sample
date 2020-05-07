@@ -2,12 +2,19 @@
 Library           SeleniumLibrary
 
 *** Variables ***
-${url}            http://webdev.xerago.com/cvm
+${url}            http://webtest.xerago.com/cvm
 ${browser}        chrome
 
 *** Test Cases ***
 Change Logo
-    Open Browser    ${url}    ${browser}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Go to    ${url}
     Maximize Browser Window
     Capture Page Screenshot
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
