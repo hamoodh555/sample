@@ -7,7 +7,14 @@ ${browser}        chrome
 
 *** Test Cases ***
 Create campaign from marketing module
-    SeleniumLibrary.Open Browser    ${url}    ${browser}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Go to    ${url}
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    CreatorAdmincreator
@@ -33,11 +40,11 @@ Create campaign from marketing module
     Sleep    15s
     SeleniumLibrary.Click Element    xpath=(.//span[@class='admin-box'])[2]
     Sleep    20s
-    SeleniumLibrary.Click Element    xpath=.//*[@id='conv-summary1']/div[3]/div/a
+    SeleniumLibrary.Click Element    xpath=.//*[@id='conv-summary1']/div[6]/div/a
     Sleep    15s
-    SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[3]
-    SeleniumLibrary.Wait Until Page Contains Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[3]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]    30s
-    SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[3]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]
+    SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[6]
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[6]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]    30s
+    SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[6]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]
     Sleep    15s
     SeleniumLibrary.Click Element    xpath=.//ul/li[@class='bxslider2']/div[1]/div/div[1]/div
     Sleep    15s
@@ -67,9 +74,17 @@ Create campaign from marketing module
     Sleep    10s
     SeleniumLibrary.Input Text    xpath=.//textarea[@ng-model='mc_Approve_reject_comments']    testing purpose
     SeleniumLibrary.Click Element    xpath=.//button[@type='button'][contains(.,'Submit')]
-
+    SeleniumLibrary.Close Browser
+    
 Review and Approve a campaign
-    SeleniumLibrary.Open Browser    ${url}    ${browser}
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    Create WebDriver  Chrome  chrome_options=${chrome_options}
+    Go to    ${url}
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    reviewers
