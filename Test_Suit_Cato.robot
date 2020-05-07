@@ -140,7 +140,7 @@ Approve the program in reviewer dashboard
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
     SeleniumLibrary.Click Button    id=form_login
-    Sleep    20s
+    Sleep    30s
     SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@ng-click='conApproveCamp(x)'])[1]
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=.//button[@ng-click='approveProgram(0)']
@@ -190,7 +190,7 @@ Abort program in reviewer dashboard
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
     SeleniumLibrary.Click Button    id=form_login
-    Sleep    20s
+    Sleep    30s
     SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@class='sprite-globe iconabort'])[1]
     SeleniumLibrary.Input Text    xpath=.//*[@id='rejectReasonCamp']    test
     SeleniumLibrary.Click Element    xpath=.//*[@ng-click='abortProgram(abortValue,rejectReasonCamp)']
@@ -201,7 +201,7 @@ Abort program in reviewer dashboard
     SeleniumLibrary.Close Browser
 	
 Ensure abort program display in creator dashboard
-    S${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    no-sandbox
