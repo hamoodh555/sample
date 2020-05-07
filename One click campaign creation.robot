@@ -2,7 +2,7 @@
 Library           SeleniumLibrary
 
 *** Variables ***
-${url}            http://webdev.xerago.com/cvm
+${url}            http://webtest.xerago.com/cvm
 ${browser}        chrome
 
 *** Test Cases ***
