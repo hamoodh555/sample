@@ -23,7 +23,7 @@ To create a new campaign
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
     Go to    ${url}
-    SeleniumLibrary.Maximize Browser Window
+    SeleniumLibrary.Set Window Size    1366    768
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -117,7 +117,7 @@ Review and Approve a campaign
 
     Create WebDriver  Chrome  chrome_options=${chrome_options}
     Go to    ${url}
-    SeleniumLibrary.Maximize Browser Window
+    SeleniumLibrary.Set Window Size    1366    768
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
