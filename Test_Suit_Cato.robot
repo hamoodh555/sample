@@ -86,8 +86,9 @@ Create successful campaign
     Sleep    15s
     SeleniumLibrary.Click Element    xpath=.//a[@title='Check Count']
     Sleep    10s
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-show='showRecordCount']    15s
     SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
-    SeleniumLibrary.Wait Until Element Is Visible    xpath=.//div[@ng-repeat='collection in productPercentage'][2]    30s
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]    30s
     SeleniumLibrary.Click Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]
     Sleep    15s
     SeleniumLibrary.Click Element    xpath=.//a[@title='Save and Proceed']
