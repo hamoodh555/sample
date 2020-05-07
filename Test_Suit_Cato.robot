@@ -23,7 +23,6 @@ Valid Credentials Test
     Create WebDriver  Chrome  chrome_options=${chrome_options}
     Go to    ${LOGIN URL}
     SeleniumLibrary.Set Window Size    1920     1024
-    SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     Sleep	20s
     SeleniumLibrary.Element Text Should Be    //label[@class='loginLabel']    Username
