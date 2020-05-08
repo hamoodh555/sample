@@ -337,7 +337,6 @@ Control group feature
     SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
     SeleniumLibrary.Set Window Size    1920    1080
     SeleniumLibrary.Go to    ${url} 
-
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    admins
     SeleniumLibrary.Input Text    id=form_password    admins@123
@@ -357,8 +356,14 @@ Control group feature
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=.//li[@class='marginacccanel']/span[@title='Logout']
     SeleniumLibrary.Close Browser
-    SeleniumLibrary.Open Browser    ${url}    ${browser}
-    SeleniumLibrary.Maximize Browser Window
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    20s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -370,7 +375,7 @@ Control group feature
     SeleniumLibrary.Close Browser
     
 One click campaign in wheel
-${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    no-sandbox
