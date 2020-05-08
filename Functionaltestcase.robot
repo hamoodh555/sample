@@ -46,12 +46,11 @@ To create a new campaign by manual flow
     SeleniumLibrary.Click Element    xpath=.//div[@id='fromDate']//div/a[2]
     SeleniumLibrary.Click Element    xpath=(.//table[@class='ui-datepicker-calendar']/tbody/tr/td[contains(.,'3')])[1]
     SeleniumLibrary.Click Element    xpath=.//input[@name='saveChanges']
-    Sleep    15s
-    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//a[@title='Check Count']    40s
+    Sleep    30s
     SeleniumLibrary.Click Element    xpath=.//a[@title='Check Count']
-    Sleep    10s
-    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-show='showRecordCount']    15s
+    Sleep    15s
     SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-show='showRecordCount']    15s
     SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]    30s
     SeleniumLibrary.Click Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]
     Sleep    15s
