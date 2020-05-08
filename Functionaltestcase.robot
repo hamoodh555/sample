@@ -1,5 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
+Library           Selenium2Library
 
 *** Variables ***
 ${url}            http://webdev.xerago.com/cvm
@@ -15,7 +16,7 @@ ${alert_txt}      Program already exists for the given period
 *** Test Cases ***
 To create a new campaign by manual flow	
     
-	${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    no-sandbox
@@ -24,7 +25,6 @@ To create a new campaign by manual flow
     SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
 	SeleniumLibrary.Set Window Size    1920    1080
     SeleniumLibrary.Go to    ${url} 
-    SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
@@ -288,8 +288,140 @@ Review and Reject a Campaign
     SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@ng-click='conOpenRejectModal(x)'])[1]
     Sleep    25s
     SeleniumLibrary.Input Text    xpath=.//*[@placeholder='Reason']    test reject
-    Sleep    25s
     SeleniumLibrary.Click Element    xpath=.//*[@ng-click='rejectConversation()']
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=.//*[@id='commonAlert']/div/div/div/div[2]/div/div/div/div/button
+    SeleniumLibrary.Close Browser
+   
+Review and approve campaign by compliance head
+    
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
+    SeleniumLibrary.Input Text    id=form_username    creatorhead
+    SeleniumLibrary.Input Text    id=form_password    creatorhead
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=.//*[@ng-click='rejectConversation()']
+   
+Review and approve campaign by design head
+    
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
+    SeleniumLibrary.Input Text    id=form_username    compliancehead
+    SeleniumLibrary.Input Text    id=form_password    compliancehead
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=.//*[@ng-click='rejectConversation()']
+    
+Control group feature
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
+
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
+    SeleniumLibrary.Input Text    id=form_username    admins
+    SeleniumLibrary.Input Text    id=form_password    admins@123
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    20s
+    SeleniumLibrary.Mouse Over    id=settingsName
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//*[@title='Application Configuration']    20s
+    SeleniumLibrary.Click Element    xpath=.//*[@title='Application Configuration']
+    Sleep    20s
+    SeleniumLibrary.Input Text    id=txt_controlGroup    ${control_val}
+    Sleep    20s
+    SeleniumLibrary.Click Element    id=proCatUpdateBtn_save
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=(.//button[@title='Ok'])[1]
+    Sleep    20s
+    SeleniumLibrary.Mouse Over    id=loginuser
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=.//li[@class='marginacccanel']/span[@title='Logout']
+    SeleniumLibrary.Close Browser
+    SeleniumLibrary.Open Browser    ${url}    ${browser}
+    SeleniumLibrary.Maximize Browser Window
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    20s
+    SeleniumLibrary.Input Text    id=form_username    testpurpose
+    SeleniumLibrary.Input Text    id=form_password    testpurpose
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
+    ${control_value}    SeleniumLibrary.Get Text    id=cgroup
+    Should Be Equal    ${control_value}    ${control_val}
+    SeleniumLibrary.Close Browser
+    
+One click campaign in wheel
+${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
+    SeleniumLibrary.Input Text    id=form_username    testpurpose
+    SeleniumLibrary.Input Text    id=form_password    testpurpose
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    10s
+    SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
+    
+Valid credential
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url}
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
+    Sleep	20s
+    SeleniumLibrary.Element Text Should Be    //label[@class='loginLabel']    Username
+    SeleniumLibrary.Element Text Should Be    //label[@for='form_password']    Password
+    SeleniumLibrary.Input Text    id=form_username    cvmcreator
+    SeleniumLibrary.Input Text    id=form_password    cvmcreator@123
+    SeleniumLibrary.Click Button    form_login
+    SeleniumLibrary.Close Browser
+	
+Invalid Credentials Test
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080	
+    SeleniumLibrary.Go to    ${url}   
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
+    Sleep	20s
+    SeleniumLibrary.Element Text Should Be    //label[@class='loginLabel']    Username
+    SeleniumLibrary.Element Text Should Be    //label[@for='form_password']    Password
+    SeleniumLibrary.Input Text    id=form_username    cvmcreators
+    SeleniumLibrary.Input Text    id=form_password    cvmcreator@12334
+    SeleniumLibrary.Click Button    form_login
+    Sleep    10s
+    Element Should Be Visible    xpath=.//*[@id='msg']    Invalid credentials
     SeleniumLibrary.Close Browser
