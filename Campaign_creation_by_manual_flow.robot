@@ -16,15 +16,15 @@ ${alert_txt}      Program already exists for the given period
 *** Test Cases ***
 To create a new campaign by manual flow	
     
-	${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    no-sandbox
 
 
-    Create WebDriver  Chrome  chrome_options=${chrome_options}
-	Set Window Size    1920    1080
-    Go to    ${url} 
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
     SeleniumLibrary.Maximize Browser Window
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
     SeleniumLibrary.Input Text    id=form_username    testpurpose
@@ -93,15 +93,15 @@ To create a new campaign by manual flow
     SeleniumLibrary.Close Browser
 
 Review and Approve a campaign
-	${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}   add_argument    headless
     Call Method    ${chrome_options}   add_argument    disable-gpu
     Call Method    ${chrome_options}   add_argument    no-sandbox
 
 
-    Create WebDriver  Chrome  chrome_options=${chrome_options}
-	Set Window Size    1920    1080
-    Go to    ${url}
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url}
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
