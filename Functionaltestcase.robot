@@ -14,6 +14,33 @@ ${Creator_status_abrt}    Aborted
 ${alert_txt}      Program already exists for the given period
 
 *** Test Cases ***
+Search and delete program
+    ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${chrome_options}   add_argument    headless
+    Call Method    ${chrome_options}   add_argument    disable-gpu
+    Call Method    ${chrome_options}   add_argument    no-sandbox
+
+
+    SeleniumLibrary.Create WebDriver  Chrome  chrome_options=${chrome_options}
+    SeleniumLibrary.Set Window Size    1920    1080
+    SeleniumLibrary.Go to    ${url} 
+
+    SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    40s
+    SeleniumLibrary.Input Text    id=form_username    testpurpose
+    SeleniumLibrary.Input Text    id=form_password    testpurpose
+    SeleniumLibrary.Click Button    id=form_login
+    Sleep    20s
+    SeleniumLibrary.Click Element    xpath=.//a[@ng-click='goCampaign()']
+    Sleep    5s
+    SeleniumLibrary.Input Text    id=search    ${Program_title}
+    Sleep    5s
+    SeleniumLibrary.Click Element    xpath=.//span[@class='sprite-globe icondel']
+    Sleep    5s
+    SeleniumLibrary.Click Element    xpath=.//button[@ng-click='deleteConversation()']
+    Sleep    5s
+    SeleniumLibrary.Click Element    xpath=.//*[@id='commonAlert']/div/div/div/div[2]/div/div/div/div/button
+    SeleniumLibrary.Close Browser
+    
 To create a new campaign by manual flow	
     
     ${chrome_options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
