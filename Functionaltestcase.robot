@@ -175,10 +175,11 @@ Create campaign from marketing module
     Sleep    15s
     SeleniumLibrary.Click Element    xpath=(.//span[@class='admin-box'])[2]
     Sleep    20s
-    SeleniumLibrary.Click Element    xpath=.//*[@id='conv-summary1']/div[6]/div/a
+    SeleniumLibrary.Click Element    xpath=.//*[@id='conv-summary1']/div[3]/div/a
     Sleep    15s
-    SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[6]
-    SeleniumLibrary.Wait Until Page Contains Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[6]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]    30s
+    SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[3]
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[3]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]    40s
+    Sleep    15s
     SeleniumLibrary.Click Element    xpath=(.//*[@id='accordionnew']/div/div/ul/li/span[contains(text(),'Cross-sell')])[6]/parent::li//div[@class='panel-body']/ul/li[contains(.,'Customers with multiple products')]
     Sleep    15s
     SeleniumLibrary.Click Element    xpath=.//ul/li[@class='bxslider2']/div[1]/div/div[1]/div
