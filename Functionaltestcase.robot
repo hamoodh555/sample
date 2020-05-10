@@ -2,7 +2,7 @@
 Library           SeleniumLibrary
 
 *** Variables ***
-${url}            http://webdev.xerago.com/cvm
+${url}            http://webtest.xerago.com/cvm
 ${browser}        chrome
 ${control_val}    15
 ${Program_title}    Program for Cross-sell Savings Accounts Volatile account balances
@@ -416,7 +416,6 @@ One click campaign in wheel
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
     SeleniumLibrary.Click Button    id=form_login
-    Sleep    10s
     SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
     
 Valid credential
