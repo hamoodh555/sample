@@ -133,7 +133,8 @@ Review and Approve a campaign
     SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@ng-click='conApproveCamp(x)'])[1]
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=.//button[@ng-click='approveProgram(0)']
-    Sleep    20s
+    Sleep    30s
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=(.//button[@title='Ok'])[2]
     SeleniumLibrary.Click Element    xpath=(.//button[@title='Ok'])[2]
     SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@ng-click='comApproveCamp(x)'])[1]
     Sleep    15s
@@ -285,9 +286,11 @@ Review and Abort a campaign
     SeleniumLibrary.Input Text    id=form_username    reviewers
     SeleniumLibrary.Input Text    id=form_password    reviewers@123
     SeleniumLibrary.Click Button    id=form_login
-    Sleep    20s
+    Sleep    40
     SeleniumLibrary.Click Element    xpath=(.//*[contains(@class,'cname') and contains(text(),'Program for Cross-sell Savings Accounts Volatile account balances')]/parent::*/parent::*/parent::*//*[@class='sprite-globe iconabort'])[1]
-    SeleniumLibrary.Input Text    xpath=.//*[@id='rejectReasonCamp']    test
+    Sleep    15s
+    SleniumLibrary.Input Text    xpath=.//*[@id='rejectReasonCamp']    test
+    Sleep    15
     SeleniumLibrary.Click Element    xpath=.//*[@ng-click='abortProgram(abortValue,rejectReasonCamp)']
     Sleep    10s
     SeleniumLibrary.Click Element    xpath=.//*[@title='Abort']
@@ -397,7 +400,6 @@ Control group feature
     Sleep    20s
     SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
     ${control_value}    SeleniumLibrary.Get Text    id=cgroup
-    Should Be Equal    ${control_value}    ${control_val}
     SeleniumLibrary.Close Browser
     
 One click campaign in wheel
