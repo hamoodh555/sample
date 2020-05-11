@@ -2,7 +2,7 @@
 Library           SeleniumLibrary
 
 *** Variables ***
-${url}            http://webtest.xerago.com/cvm
+${url}            http://webdev.xerago.com/cvm
 ${browser}        chrome
 ${control_val}    15
 ${Program_title}    Program for Cross-sell Savings Accounts Volatile account balances
