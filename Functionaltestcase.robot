@@ -326,7 +326,7 @@ One click campaign in wheel
     SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
     SeleniumLibrary.Click Button    id=form_login
-    SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram()']
+    SeleniumLibrary.Click Element    xpath=.//li[@ng-click='createNewProgram1()']
     
 Valid credential
     #Creator Login
@@ -347,7 +347,7 @@ Valid credential
     SeleniumLibrary.Click Button    form_login
     
     #To ensure succesfull login or not for below code
-    SeleniumLibrary.Element Should Be Visible    xpath=.//*[@id='homeadmin']
+    SeleniumLibrary.Element Should Be Visible    xpath=.//span[@class='logo replacea']/img
     SeleniumLibrary.Close Browser
     
     #Admin Login
@@ -365,7 +365,7 @@ Valid credential
     SeleniumLibrary.Click Button    form_login
     
     #To ensure succesfull login or not for below code
-    SeleniumLibrary.Element Should Be Visible    xpath=.//*[@id='homeadmin']
+    SeleniumLibrary.Element Should Be Visible    xpath=.//span[@class='logo replacea']/img
     SeleniumLibrary.Close Browser
 
 
@@ -384,7 +384,7 @@ Valid credential
     SeleniumLibrary.Click Button    form_login
     
     #To ensure succesfull login or not for below code
-    SeleniumLibrary.Element Should Be Visible    xpath=.//*[@id='homeadmin']
+    SeleniumLibrary.Element Should Be Visible    xpath=.//span[@class='logo replacea']/img
     SeleniumLibrary.Close Browser
     
     #Reviewer Login
@@ -402,5 +402,5 @@ Valid credential
     SeleniumLibrary.Click Button    form_login
     
     #To ensure succesfull login or not for below code
-    SeleniumLibrary.Element Should Be Visible    xpath=.//*[@id='homeadmin']
+    SeleniumLibrary.Element Should Be Visible    xpath=.//span[@class='logo replacea']/img
     SeleniumLibrary.Close Browser
