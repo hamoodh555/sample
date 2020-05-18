@@ -184,7 +184,7 @@ To create successful campaign in Prospect cloud
     SeleniumLibrary.Go to    ${url}
     SeleniumLibrary.Set Selenium Implicit Wait    60s
     SeleniumLibrary.Wait Until Element Is Enabled    //div[@class='login-footertxt']/p    
-    SeleniumLibrary.Input Text    id=form_username    cvmcreator
+    SeleniumLibrary.Input Text    id=form_username    testpurpose
     SeleniumLibrary.Input Text    id=form_password    testpurpose
     SeleniumLibrary.Click Button    id=form_login
     SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//li[@ng-click='createNewProgram()']    
